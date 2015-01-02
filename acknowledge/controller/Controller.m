@@ -12,18 +12,23 @@
 
 @property (strong, readonly) Menu *menu;
 @property (strong, readonly) SerialCommunication *serialCommunication;
+@property (strong, readonly) Network *network;
 
 @end
 
 @implementation Controller
 
-- (instancetype)initWithMenu:(Menu*)menu andSerialComms:(SerialCommunication *)aSerialCommunication {
+- (instancetype)initWithMenu:(Menu *)menu
+              andSerialComms:(SerialCommunication*)aSerialCommunication
+                  andNetwork:(Network*)aNetwork {
     self = [super init];
     if (self != nil) {
         _menu = menu;
         _menu.delegate = self;
         _serialCommunication = aSerialCommunication;
         _serialCommunication.delegate = self;
+        _network = aNetwork;
+        _network.delegate = self;
         [self initComms];
     }
     return self;
@@ -57,6 +62,11 @@
         NSLog(@"Disconnected");
         [_menu setActive:NO];
     }
+}
+
+- (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage {
+    NSLog(@"Network Message: %@", aNetworkMessage);
+    [_serialCommunication sendColor:aNetworkMessage.chosenState];
 }
 
 @end

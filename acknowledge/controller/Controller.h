@@ -9,13 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "Menu.h"
 #import "SerialCommunication.h"
+#import "Network.h"
 
-@interface Controller : NSObject <MenuDelegate, SerialCommunicationDelegate>
+@interface Controller : NSObject <MenuDelegate, SerialCommunicationDelegate, NetworkMessageReceiver>
 
-- (instancetype)initWithMenu:(Menu *)menu andSerialComms:(SerialCommunication*)aSerialCommunication;
+- (instancetype)initWithMenu:(Menu *)menu
+              andSerialComms:(SerialCommunication*)aSerialCommunication
+                  andNetwork:(Network*)aNetwork;
 - (void)redClicked;
 - (void)amberClicked;
 - (void)greenClicked;
 - (void)connectionStateChanged:(BOOL)connected;
+- (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage;
 
 @end
