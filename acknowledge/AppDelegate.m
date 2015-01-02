@@ -7,16 +7,25 @@
 //
 
 #import "AppDelegate.h"
+#import "Menu.h"
+#import "Controller.h"
+#import "SerialCommunication.h"
 
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
+@property (strong, nonatomic) Menu *menu;
+@property (strong, nonatomic) Controller *controller;
+@property (strong, nonatomic) SerialCommunication *serialCommunication;
+
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    _menu = [[Menu alloc] init];
+    _serialCommunication = [[SerialCommunication alloc] init];
+    _controller = [[Controller alloc] initWithMenu:_menu andSerialComms:_serialCommunication];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
