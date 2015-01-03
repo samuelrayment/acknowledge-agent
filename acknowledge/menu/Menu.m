@@ -43,7 +43,7 @@
 }
 
 - (void)createMenuItemForMenu:(NSMenu*)menu withName:(NSString*)aName withKeyEquivilent:(NSString*)keyEquivilent
-              withChosenState:(ChosenState)aChosenState withIndex:(NSUInteger)index {
+              withChosenState:(RAGState)aChosenState withIndex:(NSUInteger)index {
     NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:aName action:@selector(itemSelected:) keyEquivalent:keyEquivilent];
     menuItem.tag = aChosenState;
     menuItem.enabled = NO;

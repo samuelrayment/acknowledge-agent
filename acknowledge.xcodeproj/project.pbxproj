@@ -12,6 +12,7 @@
 		22BB376F1A57300B004EF02B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BB376E1A57300B004EF02B /* IOKit.framework */; };
 		22BB37721A573056004EF02B /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37711A573056004EF02B /* Controller.m */; };
 		22BB37761A574456004EF02B /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37751A574456004EF02B /* Network.m */; };
+		22BB37791A5757D6004EF02B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37781A5757D6004EF02B /* Model.m */; };
 		22F202B31A5356860014CF16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F202B21A5356860014CF16 /* AppDelegate.m */; };
 		22F202B51A5356860014CF16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F202B41A5356860014CF16 /* main.m */; };
 		22F202B71A5356860014CF16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F202B61A5356860014CF16 /* Images.xcassets */; };
@@ -33,7 +34,6 @@
 /* Begin PBXFileReference section */
 		22BB37661A572F3E004EF02B /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		22BB37671A572F3E004EF02B /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
-		22BB37691A572F76004EF02B /* ChosenState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChosenState.h; sourceTree = "<group>"; };
 		22BB376A1A572FA0004EF02B /* SerialCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialCommunication.h; sourceTree = "<group>"; };
 		22BB376B1A572FA0004EF02B /* SerialCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialCommunication.m; sourceTree = "<group>"; };
 		22BB376E1A57300B004EF02B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -41,6 +41,8 @@
 		22BB37711A573056004EF02B /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		22BB37741A574456004EF02B /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		22BB37751A574456004EF02B /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
+		22BB37771A5757D6004EF02B /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		22BB37781A5757D6004EF02B /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		22F202AC1A5356860014CF16 /* acknowledge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = acknowledge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F202B01A5356860014CF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22F202B11A5356860014CF16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,7 +183,8 @@
 		22F202D11A5356F20014CF16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				22BB37691A572F76004EF02B /* ChosenState.h */,
+				22BB37771A5757D6004EF02B /* Model.h */,
+				22BB37781A5757D6004EF02B /* Model.m */,
 			);
 			name = Model;
 			path = model;
@@ -344,6 +347,7 @@
 				22BB37721A573056004EF02B /* Controller.m in Sources */,
 				22F202B31A5356860014CF16 /* AppDelegate.m in Sources */,
 				22BB376C1A572FA0004EF02B /* SerialCommunication.m in Sources */,
+				22BB37791A5757D6004EF02B /* Model.m in Sources */,
 				22BB37761A574456004EF02B /* Network.m in Sources */,
 				22BB37681A572F3E004EF02B /* Menu.m in Sources */,
 			);

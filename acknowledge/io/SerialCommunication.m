@@ -174,7 +174,7 @@ void notificationCallback(void *refcon, io_iterator_t iterator) {
     }
 }
 
-- (void)sendColor:(ChosenState)state {
+- (void)sendColor:(RAGState)state {
     uint8_t stateChar;
     switch (state) {
         case Red:

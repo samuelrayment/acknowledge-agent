@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ChosenState.h"
+#import "Model.h"
 
 @protocol MenuDelegate
 
@@ -22,7 +22,7 @@
 - (instancetype)init;
 
 @property (weak) id<MenuDelegate>delegate;
-@property (nonatomic) ChosenState chosenState;
+@property (nonatomic) RAGState chosenState;
 @property (nonatomic) BOOL active;
 
 @end

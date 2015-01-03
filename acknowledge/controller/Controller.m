@@ -66,7 +66,7 @@
 
 - (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage {
     NSLog(@"Network Message: %@", aNetworkMessage);
-    [_serialCommunication sendColor:aNetworkMessage.chosenState];
+    [_serialCommunication sendColor:aNetworkMessage.state];
 }
 
 @end

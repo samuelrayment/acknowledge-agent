@@ -59,7 +59,7 @@
     } else {
         NSLog(@"Dict: %@", json);
         
-        ChosenState state;
+        RAGState state;
         if ([json[@"status"] isEqualToString:@"R"]) {
             state = Red;
         } else if ([json[@"status"] isEqualToString:@"A"]) {
@@ -81,10 +81,10 @@
 
 @implementation NetworkMessage
 
-- (instancetype)initWithChosenState:(ChosenState)aChosenState andMessage:(NSString*)aMessage {
+- (instancetype)initWithChosenState:(RAGState)aChosenState andMessage:(NSString*)aMessage {
     self = [super init];
     if (self) {
-        _chosenState = aChosenState;
+        _state = aChosenState;
         _message = aMessage;
     }
     return self;
