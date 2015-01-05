@@ -39,6 +39,7 @@
     [self createMenuItemForMenu:myMenu withName:@"Red" withKeyEquivilent:@"r" withChosenState:Red withIndex:0];
     [self createMenuItemForMenu:myMenu withName:@"Amber" withKeyEquivilent:@"a" withChosenState:Amber withIndex:1];
     [self createMenuItemForMenu:myMenu withName:@"Green" withKeyEquivilent:@"g" withChosenState:Green withIndex:2];
+    [self createSettingsItemForMenu:myMenu atIndex:3];
     [_statusItem setMenu:myMenu];
 }
 
@@ -53,6 +54,14 @@
         menuItem.state = NSOnState;
     }
 }
+
+- (void)createSettingsItemForMenu:(NSMenu*)menu atIndex:(NSUInteger)index {
+    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"Settings" action:@selector(settingsSelected) keyEquivalent:@","];
+    menuItem.enabled = YES;
+    menuItem.target = self;
+    [menu insertItem:menuItem atIndex:index];
+}
+
 
 - (void)itemSelected:(NSMenuItem*)sender {
     [self.menuItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -74,6 +83,10 @@
             self.chosenState = Green;
             break;
     }
+}
+
+- (void)settingsSelected {
+    [self.delegate settingsClicked];
 }
 
 - (void)setActive:(BOOL)active {

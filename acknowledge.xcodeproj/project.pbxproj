@@ -13,6 +13,7 @@
 		22BB37721A573056004EF02B /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37711A573056004EF02B /* Controller.m */; };
 		22BB37761A574456004EF02B /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37751A574456004EF02B /* Network.m */; };
 		22BB37791A5757D6004EF02B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37781A5757D6004EF02B /* Model.m */; };
+		22BB377C1A584E84004EF02B /* SettingsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BB377B1A584E84004EF02B /* SettingsWindow.xib */; };
 		22F202B31A5356860014CF16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F202B21A5356860014CF16 /* AppDelegate.m */; };
 		22F202B51A5356860014CF16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F202B41A5356860014CF16 /* main.m */; };
 		22F202B71A5356860014CF16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F202B61A5356860014CF16 /* Images.xcassets */; };
@@ -43,6 +44,7 @@
 		22BB37751A574456004EF02B /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 		22BB37771A5757D6004EF02B /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		22BB37781A5757D6004EF02B /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		22BB377B1A584E84004EF02B /* SettingsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsWindow.xib; path = ../SettingsWindow.xib; sourceTree = "<group>"; };
 		22F202AC1A5356860014CF16 /* acknowledge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = acknowledge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F202B01A5356860014CF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22F202B11A5356860014CF16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 			path = network;
 			sourceTree = "<group>";
 		};
+		22BB377A1A584628004EF02B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UI;
+			path = ui;
+			sourceTree = "<group>";
+		};
 		22F202A31A5356860014CF16 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +130,7 @@
 		22F202AE1A5356860014CF16 /* acknowledge */ = {
 			isa = PBXGroup;
 			children = (
+				22BB377A1A584628004EF02B /* UI */,
 				22BB37731A573693004EF02B /* Network */,
 				22F202D21A5357050014CF16 /* Controller */,
 				22F202D11A5356F20014CF16 /* Model */,
@@ -128,6 +139,7 @@
 				22F202B11A5356860014CF16 /* AppDelegate.h */,
 				22F202B21A5356860014CF16 /* AppDelegate.m */,
 				22F202B61A5356860014CF16 /* Images.xcassets */,
+				22BB377B1A584E84004EF02B /* SettingsWindow.xib */,
 				22F202B81A5356860014CF16 /* MainMenu.xib */,
 				22F202AF1A5356860014CF16 /* Supporting Files */,
 			);
@@ -293,6 +305,7 @@
 			files = (
 				22F202B71A5356860014CF16 /* Images.xcassets in Resources */,
 				22F202BA1A5356860014CF16 /* MainMenu.xib in Resources */,
+				22BB377C1A584E84004EF02B /* SettingsWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

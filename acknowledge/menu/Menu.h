@@ -14,6 +14,7 @@
 - (void)redClicked;
 - (void)amberClicked;
 - (void)greenClicked;
+- (void)settingsClicked;
 
 @end
 

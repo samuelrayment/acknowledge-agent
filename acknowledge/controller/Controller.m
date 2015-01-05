@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Samuel Rayment. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import "Controller.h"
 
 @interface Controller ()
@@ -51,6 +52,13 @@
 - (void)greenClicked {
     NSLog(@"Green");
     [_serialCommunication sendColor:Green];
+}
+
+- (void)settingsClicked {
+    NSLog(@"Settings");
+    NSWindowController* previewWindow;
+    previewWindow = [[NSWindowController alloc] initWithWindowNibName:@"SettingsWindow"];
+    [previewWindow showWindow:nil];
 }
 
 - (void)serialConnectionStateChanged:(BOOL)connected {
