@@ -17,9 +17,6 @@
 - (instancetype)initWithMenu:(Menu *)menu
               andSerialComms:(SerialCommunication*)aSerialCommunication
                   andNetwork:(Network*)aNetwork;
-- (void)redClicked;
-- (void)amberClicked;
-- (void)greenClicked;
 - (void)connectionStateChanged:(BOOL)connected;
 - (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage;
 

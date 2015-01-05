@@ -127,9 +127,9 @@
     if ((_serialFileDescriptor != -1) && (errorMessage != nil)) {
         close(_serialFileDescriptor);
         _serialFileDescriptor = -1;
-        [_delegate connectionStateChanged:NO];
+        [_delegate serialConnectionStateChanged:NO];
     } else {
-        [_delegate connectionStateChanged:YES];
+        [_delegate serialConnectionStateChanged:YES];
     }
     
     return errorMessage;
@@ -197,7 +197,7 @@ void notificationCallback(void *refcon, io_iterator_t iterator) {
         ret = write(_serialFileDescriptor, val, 1);
         if (ret == -1) {
             _serialFileDescriptor = -1;
-            [_delegate connectionStateChanged:NO];
+            [_delegate serialConnectionStateChanged:NO];
         }
     }
 }

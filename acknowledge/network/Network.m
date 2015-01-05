@@ -13,6 +13,7 @@
 @interface Network ()
 
 @property (strong, nonatomic) GCDAsyncSocket *asyncSocket;
+@property (nonatomic) bool connected;
 
 @end
 
@@ -22,6 +23,7 @@
     self = [super init];
     if (self) {
         [self setupNetwork];
+        _connected = NO;
     }
     return self;
 }
@@ -44,9 +46,15 @@
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
-    NSLog(@"Connected");
+    self.connected = YES;
+    [self.delegate connectionStateChanged:self.connected];
     NSData *responseTerminatorData = [@"\n" dataUsingEncoding:NSASCIIStringEncoding];
     [self.asyncSocket readDataToData:responseTerminatorData withTimeout:1000 tag:0];
+}
+
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
+    self.connected = NO;
+    [self.delegate connectionStateChanged:self.connected];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {

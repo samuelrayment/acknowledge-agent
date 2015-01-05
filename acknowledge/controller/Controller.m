@@ -53,7 +53,7 @@
     [_serialCommunication sendColor:Green];
 }
 
-- (void)connectionStateChanged:(BOOL)connected {
+- (void)serialConnectionStateChanged:(BOOL)connected {
     if (connected) {
         NSLog(@"Connected");
         [_serialCommunication sendColor: _menu.chosenState];
@@ -64,9 +64,29 @@
     }
 }
 
+- (void)connectionStateChanged:(BOOL)connected {
+    if (connected) {
+        NSLog(@"Network Connected");
+    } else {
+        NSLog(@"Network Disconnected");
+    }
+}
+
 - (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage {
     NSLog(@"Network Message: %@", aNetworkMessage);
     [_serialCommunication sendColor:aNetworkMessage.state];
+    [self sendNotification:aNetworkMessage];
+}
+
+- (void)sendNotification:(NetworkMessage*)aNetworkMessage {
+//    NSUserNotification *notification = [[NSUserNotification alloc] init];
+//    notification.title = @"Colour Change";
+//    NSString *colour = RAGStateToString(aNetworkMessage.state);
+//    
+//    notification.informativeText = [NSString stringWithFormat:@"Colour Changed To: %@", colour];
+//    notification.soundName = NSUserNotificationDefaultSoundName;
+//    
+//    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 @end

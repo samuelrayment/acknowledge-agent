@@ -32,29 +32,6 @@
                                         andNetwork:_network];
 }
 
-//
-//- (void)sendNotification:(NetworkMessage*)aNetworkMessage {
-//    NSUserNotification *notification = [[NSUserNotification alloc] init];
-//    notification.title = @"Colour Change";
-//    NSString *colour;
-//    switch (aNetworkMessage.chosenState) {
-//        case Red:
-//            colour = @"Red";
-//            break;
-//        case Green:
-//            colour = @"Green";
-//            break;
-//        case Amber:
-//            colour = @"Amber";
-//            break;
-//    }
-//    
-//    notification.informativeText = [NSString stringWithFormat:@"Colour Changed To: %@", colour];
-//    notification.soundName = NSUserNotificationDefaultSoundName;
-//    
-//    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-//}
-
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }

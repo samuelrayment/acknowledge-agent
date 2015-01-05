@@ -12,7 +12,7 @@
 
 @protocol SerialCommunicationDelegate
 
-- (void)connectionStateChanged:(BOOL)connected;
+- (void)serialConnectionStateChanged:(BOOL)connected;
 
 @end
 

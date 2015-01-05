@@ -18,6 +18,7 @@
 @protocol NetworkDelegate <NSObject>
 
 - (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage;
+- (void)connectionStateChanged:(BOOL)connected;
 
 @end
 
