@@ -176,17 +176,7 @@ void notificationCallback(void *refcon, io_iterator_t iterator) {
 
 - (void)sendColor:(RAGState)state {
     uint8_t stateChar;
-    switch (state) {
-        case Red:
-            stateChar = 'R';
-            break;
-        case Amber:
-            stateChar = 'A';
-            break;
-        case Green:
-            stateChar = 'G';
-            break;
-    }
+    stateChar = RAGStateToChar(state);
     [self writeByte:&stateChar];
 }
 

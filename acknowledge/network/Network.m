@@ -67,15 +67,7 @@
     } else {
         NSLog(@"Dict: %@", json);
         
-        RAGState state;
-        if ([json[@"status"] isEqualToString:@"R"]) {
-            state = Red;
-        } else if ([json[@"status"] isEqualToString:@"A"]) {
-            state = Amber;
-        } else {
-            state = Green;
-        }
-        
+        RAGState state = RAGStateFromString(json[@"status"]);
         NetworkMessage *message = [[NetworkMessage alloc]
                                    initWithChosenState:state andMessage:@"Test"];
         [self.delegate networkMessageReceived:message];

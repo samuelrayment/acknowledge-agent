@@ -8,7 +8,19 @@
 
 #import "Model.h"
 
+@interface Model ()
+
+@end
+
 @implementation Model
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
 
 @end
 
@@ -21,6 +33,20 @@ NSString *RAGStateToString(RAGState state) {
         case Green:
             return @"Green";
     }
+}
+
+RAGState RAGStateFromString(NSString *stringState) {
+    static NSDictionary* RAGStateLookup = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        RAGStateLookup = @{
+            @"Red": @(Red),
+            @"Green": @(Green),
+            @"Amber": @(Amber)
+       };
+    });
+    
+    return [RAGStateLookup[stringState] integerValue];
 }
 
 char RAGStateToChar(RAGState state) {

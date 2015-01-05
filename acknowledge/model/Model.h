@@ -19,5 +19,6 @@ typedef NS_ENUM(NSInteger, RAGState) {
 };
 
 NSString *RAGStateToString(RAGState state);
+RAGState RAGStateFromString(NSString *stringState);
 
 char RAGStateToChar(RAGState state);
