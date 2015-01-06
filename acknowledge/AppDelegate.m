@@ -11,6 +11,7 @@
 #import "Controller.h"
 #import "SerialCommunication.h"
 #import "Network.h"
+#import "UserSettings.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) Controller *controller;
 @property (strong, nonatomic) SerialCommunication *serialCommunication;
 @property (strong, nonatomic) Network *network;
+@property (strong, nonatomic) UserSettings *settings;
 
 @end
 
@@ -28,8 +30,9 @@
     _menu = [[Menu alloc] init];
     _serialCommunication = [[SerialCommunication alloc] init];
     _network = [[Network alloc] init];
+    _settings = [[UserSettings alloc] init];
     _controller = [[Controller alloc] initWithMenu:_menu andSerialComms:_serialCommunication
-                                        andNetwork:_network];
+                                        andNetwork:_network andUserSettings:_settings];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

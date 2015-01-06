@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2296F8D91A5B5C5C001F8B7B /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2296F8D71A5B5C5C001F8B7B /* SettingsController.m */; };
+		2296F8DA1A5B5C5C001F8B7B /* SettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2296F8D81A5B5C5C001F8B7B /* SettingsController.xib */; };
 		22BB37681A572F3E004EF02B /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37671A572F3E004EF02B /* Menu.m */; };
 		22BB376C1A572FA0004EF02B /* SerialCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB376B1A572FA0004EF02B /* SerialCommunication.m */; };
 		22BB376F1A57300B004EF02B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BB376E1A57300B004EF02B /* IOKit.framework */; };
 		22BB37721A573056004EF02B /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37711A573056004EF02B /* Controller.m */; };
 		22BB37761A574456004EF02B /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37751A574456004EF02B /* Network.m */; };
 		22BB37791A5757D6004EF02B /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BB37781A5757D6004EF02B /* Model.m */; };
-		22BB377C1A584E84004EF02B /* SettingsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BB377B1A584E84004EF02B /* SettingsWindow.xib */; };
+		22DCF1A61A5C6ED900241F05 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DCF1A51A5C6ED900241F05 /* UserSettings.m */; };
 		22F202B31A5356860014CF16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F202B21A5356860014CF16 /* AppDelegate.m */; };
 		22F202B51A5356860014CF16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F202B41A5356860014CF16 /* main.m */; };
 		22F202B71A5356860014CF16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F202B61A5356860014CF16 /* Images.xcassets */; };
@@ -33,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2296F8D61A5B5C5C001F8B7B /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		2296F8D71A5B5C5C001F8B7B /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
+		2296F8D81A5B5C5C001F8B7B /* SettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsController.xib; sourceTree = "<group>"; };
 		22BB37661A572F3E004EF02B /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		22BB37671A572F3E004EF02B /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		22BB376A1A572FA0004EF02B /* SerialCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialCommunication.h; sourceTree = "<group>"; };
@@ -44,7 +49,8 @@
 		22BB37751A574456004EF02B /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 		22BB37771A5757D6004EF02B /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		22BB37781A5757D6004EF02B /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
-		22BB377B1A584E84004EF02B /* SettingsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsWindow.xib; path = ../SettingsWindow.xib; sourceTree = "<group>"; };
+		22DCF1A41A5C6ED900241F05 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
+		22DCF1A51A5C6ED900241F05 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		22F202AC1A5356860014CF16 /* acknowledge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = acknowledge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F202B01A5356860014CF16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22F202B11A5356860014CF16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +108,9 @@
 		22BB377A1A584628004EF02B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2296F8D61A5B5C5C001F8B7B /* SettingsController.h */,
+				2296F8D71A5B5C5C001F8B7B /* SettingsController.m */,
+				2296F8D81A5B5C5C001F8B7B /* SettingsController.xib */,
 			);
 			name = UI;
 			path = ui;
@@ -139,7 +148,6 @@
 				22F202B11A5356860014CF16 /* AppDelegate.h */,
 				22F202B21A5356860014CF16 /* AppDelegate.m */,
 				22F202B61A5356860014CF16 /* Images.xcassets */,
-				22BB377B1A584E84004EF02B /* SettingsWindow.xib */,
 				22F202B81A5356860014CF16 /* MainMenu.xib */,
 				22F202AF1A5356860014CF16 /* Supporting Files */,
 			);
@@ -197,6 +205,8 @@
 			children = (
 				22BB37771A5757D6004EF02B /* Model.h */,
 				22BB37781A5757D6004EF02B /* Model.m */,
+				22DCF1A41A5C6ED900241F05 /* UserSettings.h */,
+				22DCF1A51A5C6ED900241F05 /* UserSettings.m */,
 			);
 			name = Model;
 			path = model;
@@ -303,9 +313,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2296F8DA1A5B5C5C001F8B7B /* SettingsController.xib in Resources */,
 				22F202B71A5356860014CF16 /* Images.xcassets in Resources */,
 				22F202BA1A5356860014CF16 /* MainMenu.xib in Resources */,
-				22BB377C1A584E84004EF02B /* SettingsWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +369,9 @@
 				22F202B51A5356860014CF16 /* main.m in Sources */,
 				22BB37721A573056004EF02B /* Controller.m in Sources */,
 				22F202B31A5356860014CF16 /* AppDelegate.m in Sources */,
+				22DCF1A61A5C6ED900241F05 /* UserSettings.m in Sources */,
 				22BB376C1A572FA0004EF02B /* SerialCommunication.m in Sources */,
+				2296F8D91A5B5C5C001F8B7B /* SettingsController.m in Sources */,
 				22BB37791A5757D6004EF02B /* Model.m in Sources */,
 				22BB37761A574456004EF02B /* Network.m in Sources */,
 				22BB37681A572F3E004EF02B /* Menu.m in Sources */,

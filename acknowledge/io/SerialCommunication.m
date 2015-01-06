@@ -1,6 +1,6 @@
 //
 //  SerialCommunication.m
-//  acknowledge
+//  Handles all communication with the Arduino peripheral
 //
 //  Created by Samuel Rayment on 02/01/2015.
 //  Copyright (c) 2015 Samuel Rayment. All rights reserved.

@@ -1,6 +1,7 @@
 //
 //  Controller.m
-//  acknowledge
+//  The central controller for Acknowledge responsible for dispatching messages between the various
+//  components.
 //
 //  Created by Samuel Rayment on 02/01/2015.
 //  Copyright (c) 2015 Samuel Rayment. All rights reserved.
@@ -8,12 +9,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Controller.h"
+#import "SettingsController.h"
 
 @interface Controller ()
 
 @property (strong, readonly) Menu *menu;
 @property (strong, readonly) SerialCommunication *serialCommunication;
 @property (strong, readonly) Network *network;
+@property (strong, readonly) UserSettings *settings;
+@property (strong, nonatomic) SettingsController* previewWindow;
 
 @end
 
@@ -21,9 +25,10 @@
 
 - (instancetype)initWithMenu:(Menu *)menu
               andSerialComms:(SerialCommunication*)aSerialCommunication
-                  andNetwork:(Network*)aNetwork {
+                  andNetwork:(Network*)aNetwork andUserSettings:(UserSettings*)aSettings{
     self = [super init];
     if (self != nil) {
+        _settings = aSettings;
         _menu = menu;
         _menu.delegate = self;
         _serialCommunication = aSerialCommunication;
@@ -56,9 +61,21 @@
 
 - (void)settingsClicked {
     NSLog(@"Settings");
-    NSWindowController* previewWindow;
-    previewWindow = [[NSWindowController alloc] initWithWindowNibName:@"SettingsWindow"];
-    [previewWindow showWindow:nil];
+    [self.previewWindow.window makeKeyAndOrderFront:nil];
+    [self.previewWindow showWindow:nil];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+}
+
+- (void)quitClicked {
+    exit(0);
+}
+
+- (SettingsController*)previewWindow {
+    if (_previewWindow == nil) {
+        _previewWindow = [[SettingsController alloc] initWithWindowNibName:@"SettingsController"];
+        _previewWindow.settings = self.settings;
+    }
+    return _previewWindow;
 }
 
 - (void)serialConnectionStateChanged:(BOOL)connected {

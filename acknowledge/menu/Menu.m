@@ -40,6 +40,7 @@
     [self createMenuItemForMenu:myMenu withName:@"Amber" withKeyEquivilent:@"a" withChosenState:Amber withIndex:1];
     [self createMenuItemForMenu:myMenu withName:@"Green" withKeyEquivilent:@"g" withChosenState:Green withIndex:2];
     [self createSettingsItemForMenu:myMenu atIndex:3];
+    [self createQuitItemForMenu:myMenu atIndex:4];
     [_statusItem setMenu:myMenu];
 }
 
@@ -62,6 +63,12 @@
     [menu insertItem:menuItem atIndex:index];
 }
 
+- (void)createQuitItemForMenu:(NSMenu*)menu atIndex:(NSUInteger)index {
+    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(quitSelected) keyEquivalent:@"q"];
+    menuItem.enabled = YES;
+    menuItem.target = self;
+    [menu insertItem:menuItem atIndex:index];
+}
 
 - (void)itemSelected:(NSMenuItem*)sender {
     [self.menuItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -87,6 +94,10 @@
 
 - (void)settingsSelected {
     [self.delegate settingsClicked];
+}
+
+- (void)quitSelected {
+    [self.delegate quitClicked];
 }
 
 - (void)setActive:(BOOL)active {

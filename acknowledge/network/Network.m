@@ -1,6 +1,7 @@
 //
 //  Network.m
-//  acknowledge
+//  Handles all networking logic including connecting to the upstream acknowledge server
+//  and parsing messages.
 //
 //  Created by Samuel Rayment on 02/01/2015.
 //  Copyright (c) 2015 Samuel Rayment. All rights reserved.

@@ -11,13 +11,12 @@
 #import "Menu.h"
 #import "SerialCommunication.h"
 #import "Network.h"
+#import "UserSettings.h"
 
 @interface Controller : NSObject <MenuDelegate, SerialCommunicationDelegate, NetworkDelegate>
 
 - (instancetype)initWithMenu:(Menu *)menu
               andSerialComms:(SerialCommunication*)aSerialCommunication
-                  andNetwork:(Network*)aNetwork;
-- (void)connectionStateChanged:(BOOL)connected;
-- (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage;
+                  andNetwork:(Network*)aNetwork andUserSettings:(UserSettings*)aSettings;
 
 @end
