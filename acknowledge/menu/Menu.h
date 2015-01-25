@@ -26,5 +26,7 @@
 @property (weak) id<MenuDelegate>delegate;
 @property (nonatomic) RAGState chosenState;
 @property (nonatomic) BOOL active;
+// The current state received from the upstream acknowledge server
+@property (nonatomic) RAGState networkState;
 
 @end

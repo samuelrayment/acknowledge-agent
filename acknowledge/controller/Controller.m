@@ -99,6 +99,7 @@
 
 - (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage {
     [_serialCommunication sendColor:aNetworkMessage.state];
+    _menu.networkState = aNetworkMessage.state;
     [self sendNotification:aNetworkMessage];
 }
 

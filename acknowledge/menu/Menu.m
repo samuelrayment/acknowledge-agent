@@ -32,7 +32,7 @@
 - (void)setupSystemBar {
     NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
     _statusItem = [statusBar statusItemWithLength:NSVariableStatusItemLength];
-    [_statusItem setTitle:@"Acknowledge"];
+    [_statusItem setImage:[NSImage imageNamed:@"acknowledge_no_network"]];
     [_statusItem setHighlightMode:YES];
     
     NSMenu *myMenu = [[NSMenu alloc] initWithTitle:@"Test"];
@@ -107,6 +107,23 @@
         NSMenuItem* menuItem = (NSMenuItem*)obj;
         [menuItem setTarget:target];
     }];
+}
+
+- (void)setNetworkState:(RAGState)networkState {
+    _networkState = networkState;
+    NSString *imageName;
+    switch (networkState) {
+        case Red:
+            imageName = @"acknowledge_red";
+            break;
+        case Amber:
+            imageName = @"acknowledge_amber";
+            break;
+        case Green:
+            imageName = @"acknowledge_green";
+            break;
+    }
+    [self.statusItem setImage:[NSImage imageNamed:imageName]];
 }
 
 @end
