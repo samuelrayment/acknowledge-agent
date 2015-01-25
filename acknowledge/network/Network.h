@@ -27,10 +27,10 @@
  */
 @interface NetworkMessage : NSObject 
 
-- (instancetype)initWithChosenState:(RAGState)aChosenState andMessage:(NSString*)aMessage;
+- (instancetype)initFromBuildInfo:(NSDictionary*)buildInfo;
 
 @property (readonly) RAGState state;
-@property (strong, nonatomic) NSString *message;
+@property (strong, nonatomic) NSString *error;
 
 @end
 

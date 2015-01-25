@@ -98,7 +98,6 @@
 }
 
 - (void)networkMessageReceived:(NetworkMessage*)aNetworkMessage {
-    NSLog(@"Network Message: %@", aNetworkMessage);
     [_serialCommunication sendColor:aNetworkMessage.state];
     [self sendNotification:aNetworkMessage];
 }

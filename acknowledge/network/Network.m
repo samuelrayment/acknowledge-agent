@@ -68,9 +68,7 @@
     } else {
         NSLog(@"Dict: %@", json);
         
-        RAGState state = RAGStateFromString(json[@"status"]);
-        NetworkMessage *message = [[NetworkMessage alloc]
-                                   initWithChosenState:state andMessage:@"Test"];
+        NetworkMessage *message = [[NetworkMessage alloc] initFromBuildInfo:json];
         [self.delegate networkMessageReceived:message];
     }
     
@@ -80,15 +78,34 @@
 
 @end
 
+@interface NetworkMessage ()
+
+@property (strong, nonatomic) NSDictionary *sickBuilds;
+@property (strong, nonatomic) NSDictionary *acknowledgedBuilds;
+@property (strong, nonatomic) NSDictionary *healthyBuilds;
+
+@end
+
 @implementation NetworkMessage
 
-- (instancetype)initWithChosenState:(RAGState)aChosenState andMessage:(NSString*)aMessage {
+- (instancetype)initFromBuildInfo:(NSDictionary *)buildInfo {
     self = [super init];
     if (self) {
-        _state = aChosenState;
-        _message = aMessage;
+        _sickBuilds = buildInfo[@"sick"];
+        _acknowledgedBuilds = buildInfo[@"acknowledged"];
+        _healthyBuilds = buildInfo[@"healthy"];
     }
     return self;
+}
+
+- (RAGState)state {
+    if ([self.sickBuilds count] > 0) {
+        return Red;
+    } else if ([self.acknowledgedBuilds count] > 0) {
+        return Amber;
+    } else {
+        return Green;
+    }
 }
 
 @end
