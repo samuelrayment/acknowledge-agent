@@ -32,6 +32,8 @@ NSString *RAGStateToString(RAGState state) {
             return @"Amber";
         case Green:
             return @"Green";
+        case Disconnected:
+            return @"Disconnected";
     }
 }
 
@@ -57,5 +59,8 @@ char RAGStateToChar(RAGState state) {
             return 'A';
         case Green:
             return 'G';
+        case Disconnected:
+            return 'D';
+
     }
 }

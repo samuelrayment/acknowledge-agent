@@ -122,6 +122,9 @@
         case Green:
             imageName = @"acknowledge_green";
             break;
+        case Disconnected:
+            imageName = @"acknowledge_no_network";
+            break;
     }
     [self.statusItem setImage:[NSImage imageNamed:imageName]];
 }

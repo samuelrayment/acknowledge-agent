@@ -94,6 +94,7 @@
         NSLog(@"Network Connected");
     } else {
         NSLog(@"Network Disconnected");
+        _menu.networkState = Disconnected;
     }
 }
 

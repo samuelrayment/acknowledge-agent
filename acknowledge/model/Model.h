@@ -15,7 +15,8 @@
 typedef NS_ENUM(NSInteger, RAGState) {
     Red,
     Amber,
-    Green
+    Green,
+    Disconnected
 };
 
 NSString *RAGStateToString(RAGState state);

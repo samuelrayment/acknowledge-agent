@@ -15,6 +15,9 @@
 
 @property (strong, nonatomic) GCDAsyncSocket *asyncSocket;
 @property (nonatomic) bool connected;
+@property (nonatomic) int retries;
+@property (nonatomic) float backOffRate;
+@property (nonatomic) float maxBackOff;
 
 @end
 
@@ -25,6 +28,9 @@
     if (self) {
         [self setupNetwork];
         _connected = NO;
+        _backOffRate = 1;
+        _maxBackOff = 20;
+        _retries = 0;
     }
     return self;
 }
@@ -48,14 +54,22 @@
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
     self.connected = YES;
+    self.retries = 0;
     [self.delegate connectionStateChanged:self.connected];
     NSData *responseTerminatorData = [@"\n" dataUsingEncoding:NSASCIIStringEncoding];
     [self.asyncSocket readDataToData:responseTerminatorData withTimeout:1000 tag:0];
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
+    NSLog(@"Disconnected");
     self.connected = NO;
     [self.delegate connectionStateChanged:self.connected];
+    self.retries++;
+    NSLog(@"Retries: %d", self.retries);
+    int retryTime = MIN(self.retries * self.backOffRate, self.maxBackOff);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, retryTime * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self setupNetwork];
+    });
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
