@@ -1,10 +1,19 @@
 PODS:
   - CocoaAsyncSocket (7.4.1)
+  - Expecta (0.3.1)
+  - OCMock (3.1.2)
+  - Specta (0.3.2)
 
 DEPENDENCIES:
   - CocoaAsyncSocket (~> 7.4)
+  - Expecta (~> 0.3)
+  - OCMock (~> 3.1)
+  - Specta (~> 0.3)
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: b0a1a89e7ea4c1c0ea4ec83f57d55117d3cdae06
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
+  Specta: 698a58ffa5ec948327d3b92eab50ca58d7f4fbe8
 
-COCOAPODS: 0.34.0
+COCOAPODS: 0.35.0

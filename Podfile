@@ -11,5 +11,9 @@ end
 
 target "acknowledgeTests" do
 
+pod 'Specta', '~> 0.3'
+pod 'Expecta', '~> 0.3'
+pod 'OCMock', '~> 3.1'
+
 end
 
