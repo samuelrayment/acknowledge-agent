@@ -94,7 +94,7 @@
 
 @interface NetworkMessage ()
 
-@property (strong, nonatomic) NSDictionary *sickBuilds;
+@property (strong, nonatomic) NSDictionary *failingBuilds;
 @property (strong, nonatomic) NSDictionary *acknowledgedBuilds;
 @property (strong, nonatomic) NSDictionary *healthyBuilds;
 
@@ -105,7 +105,7 @@
 - (instancetype)initFromBuildInfo:(NSDictionary *)buildInfo {
     self = [super init];
     if (self) {
-        _sickBuilds = buildInfo[@"sick"];
+        _failingBuilds = buildInfo[@"failing"];
         _acknowledgedBuilds = buildInfo[@"acknowledged"];
         _healthyBuilds = buildInfo[@"healthy"];
     }
@@ -113,7 +113,7 @@
 }
 
 - (RAGState)state {
-    if ([self.sickBuilds count] > 0) {
+    if ([self.failingBuilds count] > 0) {
         return Red;
     } else if ([self.acknowledgedBuilds count] > 0) {
         return Amber;
