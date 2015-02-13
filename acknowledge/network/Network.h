@@ -40,6 +40,8 @@
 @interface Network : NSObject
 
 - (instancetype)init;
+- (void)connectWithServerAddress:(NSString*)address;
+- (void)close;
 
 @property (weak, nonatomic) id<NetworkDelegate> delegate;
 

@@ -33,6 +33,7 @@
 - (void)setAddress:(NSString *)address {
     [self.userDefaults setObject:address forKey:@"address"];
     [self.userDefaults synchronize];
+    [self.delegate settingsUpdated];
 }
 
 - (NSString*)username {
@@ -43,6 +44,7 @@
 - (void)setUsername:(NSString *)username {
     [self.userDefaults setObject:username forKey:@"username"];
     [self.userDefaults synchronize];
+    [self.delegate settingsUpdated];
 }
 
 - (NSString*)password {
@@ -53,6 +55,7 @@
 - (void)setPassword:(NSString *)password {
     [self.userDefaults setObject:password forKey:@"password"];
     [self.userDefaults synchronize];
+    [self.delegate settingsUpdated];
 }
 
 @end

@@ -18,6 +18,7 @@
 @property (nonatomic) int retries;
 @property (nonatomic) float backOffRate;
 @property (nonatomic) float maxBackOff;
+@property (nonatomic) NSString *address;
 
 @end
 
@@ -26,7 +27,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self setupNetwork];
         _connected = NO;
         _backOffRate = 1;
         _maxBackOff = 20;
@@ -35,20 +35,43 @@
     return self;
 }
 
+- (void)connectWithServerAddress:(NSString*)address {
+    self.address = address;
+    self.asyncSocket.delegate = nil;
+    self.asyncSocket = nil;
+    [self setupNetwork];
+    [self connect];
+}
+
+- (void)close {
+    _connected = NO;
+    _backOffRate = 1;
+    _maxBackOff = 20;
+    _retries = 0;
+    [self.asyncSocket disconnect];
+}
+
 - (void)setupNetwork {
     self.asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self
                                                   delegateQueue:dispatch_get_main_queue()];
+}
+
+- (void)connect {
+    if (self.connected) {
+        return;
+    }
+    
     NSError *error = nil;
     
     uint16_t port = 9988;
     
-    if (![self.asyncSocket connectToHost:@"10.73.146.15" onPort:port error:&error])
+    if (![self.asyncSocket connectToHost:self.address onPort:port error:&error])
     {
         NSLog(@"Unable to connect to due to invalid configuration: %@", error);
     }
     else
     {
-        NSLog(@"Connecting to \"%@\" on port %hu...", @"localhost", port);
+        NSLog(@"Connecting to \"%@\" on port %hu...", self.address, port);
     }
 }
 
@@ -61,14 +84,18 @@
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
-    NSLog(@"Disconnected");
+    if (sock != self.asyncSocket) {
+        // this is a disconnection from a previous socket so don't attempt to reconnect.
+        return;
+    }
+    NSLog(@"Disconnected: %@", sock);
     self.connected = NO;
     [self.delegate connectionStateChanged:self.connected];
     self.retries++;
     NSLog(@"Retries: %d", self.retries);
     int retryTime = MIN(self.retries * self.backOffRate, self.maxBackOff);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, retryTime * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [self setupNetwork];
+        [self connect];
     });
 }
 
@@ -80,7 +107,6 @@
     if (!json) {
         NSLog(@"Error parsing JSON: %@", e);
     } else {
-        NSLog(@"Dict: %@", json);
         
         NetworkMessage *message = [[NetworkMessage alloc] initFromBuildInfo:json];
         [self.delegate networkMessageReceived:message];

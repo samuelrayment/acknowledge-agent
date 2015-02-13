@@ -29,6 +29,7 @@
     self = [super init];
     if (self != nil) {
         _settings = aSettings;
+        _settings.delegate = self;
         _menu = menu;
         _menu.delegate = self;
         _serialCommunication = aSerialCommunication;
@@ -41,26 +42,29 @@
 }
 
 - (void)initComms {
-    [_serialCommunication discover];
+    [self.network connectWithServerAddress:self.settings.address];
+    [self.serialCommunication discover];
 }
 
 - (void)redClicked {
     NSLog(@"Red");
-    [_serialCommunication sendColor:Red];
+    [self.serialCommunication sendColor:Red];
 }
 
 - (void)amberClicked {
     NSLog(@"Amber");
-    [_serialCommunication sendColor:Amber];
+    [self.serialCommunication sendColor:Amber];
 }
 
 - (void)greenClicked {
     NSLog(@"Green");
-    [_serialCommunication sendColor:Green];
+    [self.serialCommunication sendColor:Green];
 }
 
 - (void)openDashboardClicked {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://10.73.146.15/" ]];
+    NSString *serverSetting = self.settings.address;
+    NSString *serverURL = [NSString stringWithFormat:@"http://%@/", serverSetting];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:serverURL]];
 }
 
 - (void)settingsClicked {
@@ -117,6 +121,12 @@
 //    notification.soundName = NSUserNotificationDefaultSoundName;
 //    
 //    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+}
+
+- (void)settingsUpdated {
+    NSLog(@"Settings Updated");
+    [self.network close];
+    [self.network connectWithServerAddress:self.settings.address];
 }
 
 @end
