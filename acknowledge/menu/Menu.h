@@ -14,6 +14,7 @@
 - (void)redClicked;
 - (void)amberClicked;
 - (void)greenClicked;
+- (void)openDashboardClicked;
 - (void)settingsClicked;
 - (void)quitClicked;
 

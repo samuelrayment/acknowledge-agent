@@ -42,7 +42,7 @@
     
     uint16_t port = 9988;
     
-    if (![self.asyncSocket connectToHost:@"localhost" onPort:port error:&error])
+    if (![self.asyncSocket connectToHost:@"10.73.146.15" onPort:port error:&error])
     {
         NSLog(@"Unable to connect to due to invalid configuration: %@", error);
     }

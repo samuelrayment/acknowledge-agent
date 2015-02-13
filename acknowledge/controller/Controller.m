@@ -59,6 +59,10 @@
     [_serialCommunication sendColor:Green];
 }
 
+- (void)openDashboardClicked {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://10.73.146.15/" ]];
+}
+
 - (void)settingsClicked {
     NSLog(@"Settings");
     [self.previewWindow.window makeKeyAndOrderFront:nil];

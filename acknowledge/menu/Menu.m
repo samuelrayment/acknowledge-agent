@@ -36,11 +36,12 @@
     [_statusItem setHighlightMode:YES];
     
     NSMenu *myMenu = [[NSMenu alloc] initWithTitle:@"Test"];
-    [self createMenuItemForMenu:myMenu withName:@"Red" withKeyEquivilent:@"r" withChosenState:Red withIndex:0];
-    [self createMenuItemForMenu:myMenu withName:@"Amber" withKeyEquivilent:@"a" withChosenState:Amber withIndex:1];
-    [self createMenuItemForMenu:myMenu withName:@"Green" withKeyEquivilent:@"g" withChosenState:Green withIndex:2];
-    [self createSettingsItemForMenu:myMenu atIndex:3];
-    [self createQuitItemForMenu:myMenu atIndex:4];
+    [self createOpenWebItemForMenu:myMenu atIndex:0];
+    [self createMenuItemForMenu:myMenu withName:@"Red" withKeyEquivilent:@"r" withChosenState:Red withIndex:1];
+    [self createMenuItemForMenu:myMenu withName:@"Amber" withKeyEquivilent:@"a" withChosenState:Amber withIndex:2];
+    [self createMenuItemForMenu:myMenu withName:@"Green" withKeyEquivilent:@"g" withChosenState:Green withIndex:3];
+    [self createSettingsItemForMenu:myMenu atIndex:4];
+    [self createQuitItemForMenu:myMenu atIndex:5];
     [_statusItem setMenu:myMenu];
 }
 
@@ -54,6 +55,13 @@
     if (aChosenState == self.chosenState) {
         menuItem.state = NSOnState;
     }
+}
+
+- (void)createOpenWebItemForMenu:(NSMenu*)menu atIndex:(NSUInteger)index {
+    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"Open Dashboard" action:@selector(openDashboardSelected) keyEquivalent:@",d"];
+    menuItem.enabled = YES;
+    menuItem.target = self;
+    [menu insertItem:menuItem atIndex:index];
 }
 
 - (void)createSettingsItemForMenu:(NSMenu*)menu atIndex:(NSUInteger)index {
@@ -90,6 +98,10 @@
             self.chosenState = Green;
             break;
     }
+}
+
+- (void)openDashboardSelected {
+    [self.delegate openDashboardClicked];
 }
 
 - (void)settingsSelected {
