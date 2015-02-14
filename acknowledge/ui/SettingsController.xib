@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
@@ -7,8 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsController">
             <connections>
                 <outlet property="addressField" destination="wlt-Vw-8Qc" id="yo8-hQ-DV5"/>
-                <outlet property="passwordField" destination="dj8-Mt-Mn6" id="xzu-pO-JYA"/>
-                <outlet property="usernameField" destination="IVC-W1-Tqv" id="1Nx-d3-8qR"/>
+                <outlet property="notificationUpdatedField" destination="pQn-3Q-Ef2" id="eYd-Nw-vKL"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -23,15 +22,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hpy-Pj-L0b">
-                        <rect key="frame" x="18" y="216" width="146" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Acknowledge Address:" id="fDG-iz-XwO">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8VP-Yi-Mke">
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8VP-Yi-Mke">
                         <rect key="frame" x="243" y="216" width="215" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="RXX-jJ-dIg">
                             <font key="font" metaFont="system"/>
@@ -42,34 +33,7 @@
                             <action selector="addressFieldUpdated:" target="-2" id="Zr6-iC-M26"/>
                         </connections>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaX-AY-VSb">
-                        <rect key="frame" x="18" y="184" width="146" height="24"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Username:" id="PlT-tA-Cog">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVC-W1-Tqv">
-                        <rect key="frame" x="243" y="184" width="215" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="zPX-Xd-PN5">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="usernameFieldUpdated:" target="-2" id="PZ3-Ce-k6C"/>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nb5-2v-fDA">
-                        <rect key="frame" x="20" y="154" width="144" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Password:" id="cdH-ak-qe6">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wlt-Vw-8Qc">
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wlt-Vw-8Qc">
                         <rect key="frame" x="243" y="216" width="215" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="0Fj-5w-kio">
                             <font key="font" metaFont="system"/>
@@ -80,21 +44,49 @@
                             <action selector="addressFieldUpdated:" target="-2" id="GoD-3q-bAW"/>
                         </connections>
                     </textField>
-                    <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-Mt-Mn6">
-                        <rect key="frame" x="243" y="154" width="215" height="22"/>
-                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="Ppv-OH-09I">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hpy-Pj-L0b">
+                        <rect key="frame" x="18" y="216" width="146" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Acknowledge Address:" id="fDG-iz-XwO">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <allowedInputSourceLocales>
-                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                            </allowedInputSourceLocales>
-                        </secureTextFieldCell>
-                        <connections>
-                            <action selector="passwordFieldUpdated:" target="-2" id="rfX-Qx-nOr"/>
-                        </connections>
-                    </secureTextField>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wy6-7J-CcZ">
+                        <rect key="frame" x="20" y="185" width="144" height="23"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Enable Notifications:" id="xRx-hw-EIb">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdZ-Ow-Wfa">
+                        <rect key="frame" x="241" y="187" width="61" height="18"/>
+                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="pQn-3Q-Ef2">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="notificationEnabledUpdated:" target="-2" id="h9x-lJ-FZb"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="wlt-Vw-8Qc" firstAttribute="top" secondItem="8VP-Yi-Mke" secondAttribute="top" id="7Ie-er-EFR"/>
+                    <constraint firstItem="Hpy-Pj-L0b" firstAttribute="top" secondItem="8VP-Yi-Mke" secondAttribute="top" id="JxL-Ft-A20"/>
+                    <constraint firstAttribute="trailing" secondItem="wlt-Vw-8Qc" secondAttribute="trailing" constant="22" id="PAT-c2-gxR"/>
+                    <constraint firstItem="wy6-7J-CcZ" firstAttribute="height" secondItem="Hpy-Pj-L0b" secondAttribute="height" id="UwG-UM-4VF"/>
+                    <constraint firstItem="Hpy-Pj-L0b" firstAttribute="leading" secondItem="wy6-7J-CcZ" secondAttribute="leading" id="bsI-iM-3KP"/>
+                    <constraint firstItem="8VP-Yi-Mke" firstAttribute="trailing" secondItem="wlt-Vw-8Qc" secondAttribute="trailing" id="cHj-jH-ToM"/>
+                    <constraint firstItem="8VP-Yi-Mke" firstAttribute="leading" secondItem="Hpy-Pj-L0b" secondAttribute="trailing" constant="81" id="dG0-aY-Dkg"/>
+                    <constraint firstItem="Hpy-Pj-L0b" firstAttribute="leading" secondItem="wy6-7J-CcZ" secondAttribute="leading" id="e1Z-bG-Or5"/>
+                    <constraint firstItem="Hpy-Pj-L0b" firstAttribute="trailing" secondItem="wy6-7J-CcZ" secondAttribute="trailing" id="e9e-IJ-dBD"/>
+                    <constraint firstItem="8VP-Yi-Mke" firstAttribute="leading" secondItem="wlt-Vw-8Qc" secondAttribute="leading" id="hJz-z5-LC6"/>
+                    <constraint firstItem="Hpy-Pj-L0b" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" symbolic="YES" id="kWD-Jy-uoF"/>
+                    <constraint firstItem="wlt-Vw-8Qc" firstAttribute="baseline" secondItem="8VP-Yi-Mke" secondAttribute="baseline" id="mYQ-at-VpL"/>
+                    <constraint firstItem="8VP-Yi-Mke" firstAttribute="bottom" secondItem="Hpy-Pj-L0b" secondAttribute="bottom" id="uGa-GG-iDD"/>
+                    <constraint firstItem="Hpy-Pj-L0b" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="32" id="uVl-B1-Y6Z"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>

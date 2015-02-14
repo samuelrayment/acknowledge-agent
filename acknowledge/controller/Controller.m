@@ -1,7 +1,7 @@
 //
 //  Controller.m
-//  The central controller for Acknowledge responsible for dispatching messages between the various
-//  components.
+//  The central controller for Acknowledge responsible for dispatching
+//  messages between the various components.
 //
 //  Created by Samuel Rayment on 02/01/2015.
 //  Copyright (c) 2015 Samuel Rayment. All rights reserved.
@@ -17,7 +17,7 @@
 @property (strong, readonly) SerialCommunication *serialCommunication;
 @property (strong, readonly) Network *network;
 @property (strong, readonly) UserSettings *settings;
-@property (strong, nonatomic) SettingsController* previewWindow;
+@property (strong, nonatomic) SettingsController* settingsController;
 
 @end
 
@@ -46,6 +46,17 @@
     [self.serialCommunication discover];
 }
 
+
+- (SettingsController*)settingsController {
+    if (_settingsController == nil) {
+        _settingsController = [[SettingsController alloc] initWithWindowNibName:@"SettingsController"];
+        _settingsController.settings = self.settings;
+    }
+    return _settingsController;
+}
+
+#pragma - mark Menu Delegate
+
 - (void)redClicked {
     NSLog(@"Red");
     [self.serialCommunication sendColor:Red];
@@ -69,8 +80,8 @@
 
 - (void)settingsClicked {
     NSLog(@"Settings");
-    [self.previewWindow.window makeKeyAndOrderFront:nil];
-    [self.previewWindow showWindow:nil];
+    [self.settingsController.window makeKeyAndOrderFront:nil];
+    [self.settingsController showWindow:nil];
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 }
 
@@ -78,13 +89,7 @@
     exit(0);
 }
 
-- (SettingsController*)previewWindow {
-    if (_previewWindow == nil) {
-        _previewWindow = [[SettingsController alloc] initWithWindowNibName:@"SettingsController"];
-        _previewWindow.settings = self.settings;
-    }
-    return _previewWindow;
-}
+#pragma mark - SerialCommunicationDelegate
 
 - (void)serialConnectionStateChanged:(BOOL)connected {
     if (connected) {
@@ -96,6 +101,8 @@
         [_menu setActive:NO];
     }
 }
+
+#pragma mark - NetworkDelegate
 
 - (void)connectionStateChanged:(BOOL)connected {
     if (connected) {
@@ -112,21 +119,30 @@
     [self sendNotification:aNetworkMessage];
 }
 
-- (void)sendNotification:(NetworkMessage*)aNetworkMessage {
-//    NSUserNotification *notification = [[NSUserNotification alloc] init];
-//    notification.title = @"Colour Change";
-//    NSString *colour = RAGStateToString(aNetworkMessage.state);
-//    
-//    notification.informativeText = [NSString stringWithFormat:@"Colour Changed To: %@", colour];
-//    notification.soundName = NSUserNotificationDefaultSoundName;
-//    
-//    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-}
+#pragma mark - UserSettingsDelegate 
 
-- (void)settingsUpdated {
-    NSLog(@"Settings Updated");
+- (void)addressUpdated {
     [self.network close];
     [self.network connectWithServerAddress:self.settings.address];
+}
+
+- (void)notificationsEnabledUpdated {
+    NSLog(@"Notifications Enabled Updated");
+}
+
+#pragma mark - Notifications
+
+- (void)sendNotification:(NetworkMessage*)aNetworkMessage {
+    if (self.settings.notificationsEnabled) {
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = @"Acknowledge Status Update";
+        NSString *colour = RAGStateToString(aNetworkMessage.state);
+        
+        notification.informativeText = [NSString stringWithFormat:@"Status Changed To: %@", colour];
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
 }
 
 @end

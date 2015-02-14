@@ -10,7 +10,8 @@
 
 @protocol UserSettingsDelegate
 
-- (void)settingsUpdated;
+- (void)addressUpdated;
+- (void)notificationsEnabledUpdated;
 
 @end
 
@@ -18,7 +19,6 @@
 
 @property (weak, nonatomic) id<UserSettingsDelegate> delegate;
 @property NSString *address;
-@property NSString *username;
-@property NSString *password;
+@property BOOL notificationsEnabled;
 
 @end

@@ -10,12 +10,10 @@
 
 @interface SettingsController () <NSWindowDelegate>
 
+@property (weak) IBOutlet NSButtonCell *notificationUpdatedField;
 @property (weak) IBOutlet NSTextField *addressField;
-@property (weak) IBOutlet NSTextField *usernameField;
-@property (weak) IBOutlet NSSecureTextField *passwordField;
 - (IBAction)addressFieldUpdated:(id)sender;
-- (IBAction)usernameFieldUpdated:(id)sender;
-- (IBAction)passwordFieldUpdated:(id)sender;
+- (IBAction)notificationEnabledUpdated:(id)sender;
 
 @end
 
@@ -26,26 +24,20 @@
     self.window.delegate = self;
     
     [self.addressField setStringValue:self.settings.address];
-    [self.usernameField setStringValue:self.settings.username];
-    [self.passwordField setStringValue:self.settings.password];
+    [self.notificationUpdatedField setState:self.settings.notificationsEnabled];
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
     self.settings.address = self.addressField.stringValue;
-    self.settings.username = self.usernameField.stringValue;
-    self.settings.password = self.passwordField.stringValue;
+    self.settings.notificationsEnabled = self.notificationUpdatedField.state;
 }
 
 - (IBAction)addressFieldUpdated:(id)sender {
     self.settings.address = self.addressField.stringValue;
 }
 
-- (IBAction)usernameFieldUpdated:(id)sender {
-    self.settings.username = self.usernameField.stringValue;
-}
-
-- (IBAction)passwordFieldUpdated:(id)sender {
-    self.settings.password = self.passwordField.stringValue;
+- (IBAction)notificationEnabledUpdated:(id)sender {
+    self.settings.notificationsEnabled = self.notificationUpdatedField.state;
 }
 
 @end

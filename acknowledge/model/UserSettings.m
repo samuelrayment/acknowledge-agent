@@ -33,29 +33,17 @@
 - (void)setAddress:(NSString *)address {
     [self.userDefaults setObject:address forKey:@"address"];
     [self.userDefaults synchronize];
-    [self.delegate settingsUpdated];
+    [self.delegate addressUpdated];
 }
 
-- (NSString*)username {
-    NSString *val = [self.userDefaults stringForKey:@"username"];
-    return val;
+- (BOOL)notificationsEnabled {
+    return [self.userDefaults boolForKey:@"notificationsEnabled"];
 }
 
-- (void)setUsername:(NSString *)username {
-    [self.userDefaults setObject:username forKey:@"username"];
+- (void)setNotificationsEnabled:(BOOL)notificationsEnabled {
+    [self.userDefaults setBool:notificationsEnabled forKey:@"notificationsEnabled"];
     [self.userDefaults synchronize];
-    [self.delegate settingsUpdated];
-}
-
-- (NSString*)password {
-    NSString *val = [self.userDefaults stringForKey:@"password"];
-    return val;
-}
-
-- (void)setPassword:(NSString *)password {
-    [self.userDefaults setObject:password forKey:@"password"];
-    [self.userDefaults synchronize];
-    [self.delegate settingsUpdated];
+    [self.delegate notificationsEnabledUpdated];
 }
 
 @end
